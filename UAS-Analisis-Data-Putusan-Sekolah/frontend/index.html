@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduAnalytics — Dashboard Analisis Putus Sekolah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    svg { display: block; }
+    section[id] { scroll-margin-top: 120px; }
+  </style>
+</head>
+
+<body class="bg-[#f8fafc] font-body text-slate-800">
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+    <span class="font-heading font-extrabold text-blue-600 text-lg">EduAnalytics</span>
+    <div class="hidden md:flex gap-8 text-sm font-medium">
+      <a href="#overview">Overview</a>
+      <a href="#visualisasi">Visualisasi</a>
+      <a href="#model">Model</a>
+      <a href="#rekomendasi">Rekomendasi</a>
+    </div>
+  </div>
+</nav>
+
+<div class="h-24"></div>
+
+  <!-- HERO -->
+  <section id="overview" class="relative bg-[#eef5ff] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-8 pt-16 pb-32 grid md:grid-cols-2 gap-20 items-center">
+
+      <!-- LEFT TEXT -->
+      <div>
+        <p class="uppercase tracking-widest text-sm mb-4 text-blue-500">
+          Analisis Data Pendidikan
+        </p>
+        <h1 class="font-heading text-5xl font-extrabold leading-tight mb-6">
+          Analisis & Prediksi<br>Putus Sekolah di Indonesia
+        </h1>
+        <p class="text-slate-600 max-w-xl mb-8">
+          Dashboard visual untuk memahami variasi dan faktor prediktif putus sekolah
+          berbasis analisis data dan machine learning.
+        </p>
+
+      <div class="flex gap-4 flex-wrap mt-2">
+
+        <!-- BUTTON GOOGLE COLAB -->
+        <a href="https://colab.research.google.com/drive/1pK8pJlKILgC0DRJDmDQB9Z72J1t0IyBg?usp=sharing"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full
+                  bg-blue-600 text-white font-medium
+                  hover:bg-blue-700 transition shadow-md">
+
+          <!-- ICON -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 7h8m0 0v8m0-8L11 17m-4 4H5a2 2 0 01-2-2v-2" />
+          </svg>
+
+          Lihat Analisis (Colab)
+        </a>
+
+        <!-- BUTTON GOOGLE SHEET -->
+        <a href="https://docs.google.com/spreadsheets/d/185hnPTGmMZT4UexwijRK7J0VC98Ziwht/edit?gid=1405502009#gid=1405502009"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full
+                  bg-white text-blue-700 font-medium border border-blue-200
+                  hover:bg-blue-50 transition shadow-sm">
+
+          <!-- ICON -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 17v-6h6v6m-8 4h10a2 2 0 002-2V7l-5-5H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+
+          Lihat Dataset (Spreadsheet)
+        </a>
+      </div>
+      </div>
+
+      <!-- RIGHT : CLEAN DASHBOARD MOCK -->
+      <div class="relative bg-blue-600 rounded-[42px] min-h-[420px] shadow-xl overflow-hidden flex items-center justify-center">
+
+        <!-- inner canvas -->
+        <div class="relative w-[85%] h-[75%] bg-blue-500/60 rounded-3xl p-8">
+
+          <!-- title -->
+          <p class="text-white/80 text-sm mb-6">Ringkasan Visual</p>
+
+          <!-- BAR CHART (CENTERED & RAPIH) -->
+          <div class="flex items-end justify-center gap-4 h-40 mb-8">
+            <div class="w-6 bg-white/40 h-[45%] rounded-md"></div>
+            <div class="w-6 bg-white/60 h-[70%] rounded-md"></div>
+            <div class="w-6 bg-white h-[90%] rounded-md"></div>
+            <div class="w-6 bg-white/70 h-[65%] rounded-md"></div>
+            <div class="w-6 bg-white/50 h-[50%] rounded-md"></div>
+          </div>
+
+          <!-- MINI INFO ROW -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white/90 rounded-xl p-3 text-center">
+              <p class="text-xs text-slate-500">Provinsi</p>
+              <p class="font-bold text-blue-600">39</p>
+            </div>
+            <div class="bg-white/90 rounded-xl p-3 text-center">
+              <p class="text-xs text-slate-500">Variabel</p>
+              <p class="font-bold text-blue-600">13</p>
+            </div>
+            <div class="bg-white/90 rounded-xl p-3 text-center">
+              <p class="text-xs text-slate-500">Grafik</p>
+              <p class="font-bold text-blue-600">11</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    <!-- WAVE -->
+    <svg viewBox="0 0 1440 80" class="absolute bottom-0 left-0 w-full">
+      <path fill="#ffffff"
+        d="M0,40 C240,80 480,80 720,60 960,40 1200,20 1440,30 L1440,80 L0,80 Z"/>
+    </svg>
+  </section>
+
+
+<!-- INSIGHT -->
+<section class="bg-white pt-32 pb-28">
+  <div class="max-w-6xl mx-auto px-8 grid md:grid-cols-3 gap-8">
+    <div class="bg-blue-50 rounded-2xl p-6">
+      Terdapat perbedaan signifikan tingkat putus sekolah antar provinsi.
+    </div>
+    <div class="bg-sky-50 rounded-2xl p-6">
+      Beberapa provinsi bertindak sebagai outlier dengan nilai ekstrem.
+    </div>
+    <div class="bg-indigo-50 rounded-2xl p-6">
+      Model Random Forest efektif menangkap pola non-linear.
+    </div>
+  </div>
+</section>
+
+<!-- VISUALISASI -->
+<section id="visualisasi" class="max-w-7xl mx-auto px-8 pt-16 mb-40">
+  <h2 class="font-heading text-4xl font-extrabold mb-4">
+    Hasil Visualisasi
+  </h2>
+  <p class="text-slate-600 mb-16 max-w-2xl">
+    Sebelas visualisasi berikut merangkum hasil eksplorasi data, evaluasi model,
+    dan interpretasi prediktif putus sekolah di tingkat provinsi.
+  </p>
+
+<!-- HIGHLIGHT -->
+  <div class="bg-white rounded-[48px] p-10 shadow-xl mb-20">
+    <h3 class="font-heading text-2xl font-bold mb-4">
+      Distribusi Putus Sekolah (Highlight)
+    </h3>
+      <div class="h-80 bg-blue-50 rounded-3xl mb-4 flex items-center justify-center">
+        <img src="distribusi_putus_sekolah.png"
+            class="w-full h-full object-contain rounded-2xl">
+      </div>
+    <p class="text-slate-600">
+      Distribusi putus sekolah menunjukkan sebaran yang tidak merata antar provinsi,
+      dengan beberapa wilayah memiliki nilai jauh di atas rata-rata nasional.
+      Kondisi ini mengindikasikan adanya outlier yang berpotensi memengaruhi
+      evaluasi model prediksi.
+    </p>
+  </div>
+
+<!-- GRID 2 KOLOM -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+
+  <!-- CARD TEMPLATE -->
+  <!-- 1 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Top 10 Provinsi Putus Sekolah Tertinggi
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="Top_10_Provinsi_dengan_putus_sekolah_tertinggi.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Grafik ini mengidentifikasi sepuluh provinsi dengan jumlah putus sekolah
+      tertinggi yang menjadi wilayah prioritas dalam analisis dan kebijakan pendidikan.
+      
+    </p>
+  </div>
+
+  <!-- 2 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Bottom 10 Provinsi Putus Sekolah Terendah
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="Bottom_10_Provinsi _terendah.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Sepuluh provinsi dengan tingkat putus sekolah terendah digunakan sebagai
+      pembanding untuk memahami variasi kondisi pendidikan antar wilayah.
+    </p>
+  </div>
+
+  <!-- 3 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Ringkasan Statistik Putus Sekolah
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="boxplot_putus_sekolah.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Ringkasan statistik menunjukkan bahwa nilai rata-rata putus sekolah lebih
+      tinggi dibandingkan median, menandakan distribusi yang condong dan dipengaruhi
+      oleh provinsi bernilai ekstrem.
+    </p>
+  </div>
+
+  <!-- 4 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Heatmap Korelasi Indikator Pendidikan
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="boxplot_siswa_dan_boxplot_sekolah.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Heatmap korelasi digunakan untuk mengidentifikasi hubungan linear antar
+      indikator pendidikan serta potensi multikolinearitas pada data.
+    </p>
+  </div>
+
+  <!-- 5 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Jumlah Siswa vs Putus Sekolah
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="outlier_pada_hubungan_siswa_vs_putus_sekolah.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Scatter plot menunjukkan hubungan positif antara jumlah siswa dan putus sekolah,
+      di mana provinsi dengan populasi siswa besar cenderung memiliki nilai putus sekolah
+      lebih tinggi secara agregat.
+    </p>
+  </div>
+
+  <!-- 6 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Ruang Kelas Rusak Berat vs Putus Sekolah
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="distribusi_putus_sekolah.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Visualisasi ini menyoroti hubungan prediktif antara kondisi sarana prasarana
+      dan tingkat putus sekolah, sekaligus memperlihatkan provinsi outlier.
+    </p>
+  </div>
+
+  <!-- 7 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Actual vs Predicted (Random Forest)
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="actual_vs_predict_(random_forest).png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Plot perbandingan nilai aktual dan prediksi menunjukkan performa model yang
+      cukup baik dengan sebagian besar titik mendekati garis ideal.
+    </p>
+  </div>
+
+  <!-- 8 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Residual Plot
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="residual_plot.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Residual plot digunakan untuk mengevaluasi pola kesalahan prediksi dan
+      memastikan tidak adanya pola sistematis pada error model.
+    </p>
+  </div>
+
+  <!-- 9 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Top 10 Provinsi dengan Error Prediksi Terbesar
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="top_10_provinsi_dengan_error_prediksi_terbesar.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Provinsi dengan error prediksi terbesar menunjukkan wilayah yang lebih sulit
+      diprediksi oleh model akibat karakteristik data yang ekstrem.
+    </p>
+  </div>
+
+  <!-- 10 -->
+  <div class="bg-white rounded-[36px] p-8 shadow-lg flex flex-col">
+    <h4 class="font-heading font-bold mb-4">
+      Feature Importance (Random Forest)
+    </h4>
+
+    <div class="aspect-[16/9] bg-slate-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+      <img src="top_10_feature_importance.png"
+           class="w-full h-full object-contain">
+    </div>
+
+    <p class="text-sm text-slate-600">
+      Feature importance menunjukkan bahwa indikator terkait skala pendidikan dan
+      kondisi sarana menjadi kontributor utama dalam prediksi putus sekolah.
+    </p>
+  </div>
+
+</div>
+</section>
+
+<!-- MODEL -->
+<section id="model" class="bg-white py-28">
+  <div class="max-w-6xl mx-auto px-8">
+    <h2 class="font-heading text-4xl font-extrabold mb-12">
+      Model at a Glance
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="bg-blue-50 rounded-3xl p-8">
+        Random Forest Regressor
+      </div>
+      <div class="bg-sky-50 rounded-3xl p-8">
+        MAE · RMSE · R²
+      </div>
+      <div class="bg-indigo-50 rounded-3xl p-8">
+        Feature Importance
+      </div>
+    </div>
+
+    <p class="text-xs text-slate-500 italic mt-8">
+      Model bersifat prediktif dan tidak menyimpulkan hubungan sebab-akibat.
+    </p>
+  </div>
+</section>
+
+
+<!-- WAVE TRANSISI ATAS (PUTIH KE BIRU) -->
+<div class="relative overflow-hidden bg-white">
+  <svg viewBox="0 0 1440 140" class="block w-full">
+    <path
+      d="M0,90 C240,140 480,140 720,115 960,90 1200,80 1440,90 L1440,0 L0,0 Z"
+      fill="#ffffff"
+    />
+  </svg>
+</div>
+
+
+<!-- REKOMENDASI -->
+<section
+  id="rekomendasi"
+  class="bg-gradient-to-br from-blue-600 to-sky-500 text-white pt-44 pb-40"
+>
+  <div class="max-w-7xl mx-auto px-8">
+
+    <h2 class="font-heading text-5xl font-extrabold mb-8">
+      Rekomendasi Kebijakan
+    </h2>
+
+    <p class="max-w-3xl text-white/90 mb-20 leading-relaxed">
+      Rekomendasi berikut disusun berdasarkan hasil eksplorasi data dan pemodelan
+      prediktif untuk mendukung pengambilan kebijakan pendidikan yang lebih
+      terarah, efektif, dan berbasis bukti empiris.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+      <!-- CARD 1 -->
+      <div class="bg-white/15 backdrop-blur rounded-[36px] p-12">
+        <h4 class="font-heading text-xl font-bold mb-5">
+          Fokus Wilayah Prioritas
+        </h4>
+        <p class="text-sm text-white/90 leading-relaxed">
+          Provinsi dengan tingkat putus sekolah tertinggi perlu menjadi fokus
+          utama intervensi kebijakan. Ketimpangan antar wilayah menunjukkan
+          pentingnya alokasi anggaran dan program afirmatif yang lebih terarah
+          berdasarkan hasil analisis data.
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="bg-white/15 backdrop-blur rounded-[36px] p-12">
+        <h4 class="font-heading text-xl font-bold mb-5">
+          Perbaikan Sarana Pendidikan
+        </h4>
+        <p class="text-sm text-white/90 leading-relaxed">
+          Kondisi ruang kelas dan fasilitas pendidikan terbukti berkontribusi
+          terhadap risiko putus sekolah. Oleh karena itu, rehabilitasi sarana
+          pendidikan dan peningkatan kualitas lingkungan belajar perlu menjadi
+          prioritas dalam kebijakan pendidikan daerah.
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="bg-white/15 backdrop-blur rounded-[36px] p-12">
+        <h4 class="font-heading text-xl font-bold mb-5">
+          Kebijakan Berbasis Data
+        </h4>
+        <p class="text-sm text-white/90 leading-relaxed">
+          Pemanfaatan model prediktif memungkinkan identifikasi risiko putus
+          sekolah secara dini. Pendekatan berbasis data ini mendukung perumusan
+          kebijakan yang lebih preventif, adaptif, dan berorientasi pada dampak
+          jangka panjang.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="text-center text-xs text-slate-500 py-10 bg-[#f8fafc]">
+  © 2025 — EduAnalytics
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('bg-white/70','backdrop-blur','shadow');
+    } else {
+      navbar.classList.remove('bg-white/70','backdrop-blur','shadow');
+    }
+  });
+</script>
+
+</body>
+</html>
