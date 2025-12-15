@@ -2,6 +2,7 @@
 
 Nama: Aisyah  
 NIM: 2400792  
+Program Studi: Pendidikan Ilmu Komputer - 3A
 Mata Kuliah: Analisis Data  
 
 ## Deskripsi Proyek
@@ -11,7 +12,6 @@ Random Forest Regressor.
 
 ## Struktur Folder
 - notebook/ : kode analisis data & pemodelan
-- backend/ : API prediksi (Python)
 - frontend/ : aplikasi web (HTML, CSS, JavaScript)
 - data/ : dataset yang digunakan
 
@@ -25,6 +25,5 @@ Random Forest Regressor.
 - R²
 - 5-Fold Cross Validation
 
-## Cara Menjalankan (Opsional)
-1. Jalankan backend (Python)
-2. Buka file `index.html` pada browser
+## Cara Menjalankan
+1. Buka file `index.html` pada browser
